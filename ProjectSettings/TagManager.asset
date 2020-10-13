@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bottom Edge
   - Paddle
+  - Brick
   layers:
   - Default
   - TransparentFX

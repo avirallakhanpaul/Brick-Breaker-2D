@@ -6,9 +6,10 @@ public class Ball : MonoBehaviour {
 
     public Rigidbody2D BallRigidBody;
     public GameObject BallPosition;
+    public float force = 300f;
     public float ballOffsetY = 0.25f;
     private bool isPlaying;
-    public float force = 300f;
+    public Transform BrickExplosionPrefab;
     void Start() {
 
         isPlaying = false;
@@ -20,7 +21,7 @@ public class Ball : MonoBehaviour {
         if(!isPlaying) {
             resetBallPosition();
 
-            if(Input.GetKey(KeyCode.Space)) {
+            if(Input.GetButtonDown("Jump")) {
                 startGame();
             }
         }
@@ -29,7 +30,6 @@ public class Ball : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D obj) {
 
         if(obj.CompareTag("Bottom Edge")) {
-            Debug.Log("Ball hit the bottom of the screen");
             isPlaying = false;
         }
     }
@@ -44,5 +44,15 @@ public class Ball : MonoBehaviour {
 
         isPlaying = true;
         BallRigidBody.AddForce(Vector2.up * force);
+    }
+
+    void OnCollisionEnter2D(Collision2D obj) {
+
+        if(obj.transform.CompareTag("Brick")) {
+
+            Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
+            Destroy(obj.gameObject);
+            Destroy(newExplosion.gameObject, 2.5f);
+        }
     }
 }
