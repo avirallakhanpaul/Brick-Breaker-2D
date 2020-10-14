@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PadddleMovement : MonoBehaviour {
     public float horizontalSpeed = 5.0f;
-    private float leftScreenEdge = -1.71f;
-    private float rightScreenEdge = 1.71f;
+    private float leftScreenEdge = -15.0f;
+    private float rightScreenEdge = -11.4f;
     void Start() {
 
     }
@@ -14,11 +14,11 @@ public class PadddleMovement : MonoBehaviour {
         float horizontalAxis = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * horizontalAxis * horizontalSpeed * Time.deltaTime);
 
-        if(transform.position.x > 1.71) {
+        if(transform.position.x > rightScreenEdge) {
             transform.position = new Vector2(rightScreenEdge, transform.position.y);
         }
 
-        if(transform.position.x < -1.71) {
+        if(transform.position.x < leftScreenEdge) {
             transform.position = new Vector2(leftScreenEdge, transform.position.y);
         }
     }

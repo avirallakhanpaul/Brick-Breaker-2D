@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour {
     public float ballOffsetY = 0.25f;
     private bool isPlaying;
     public Transform BrickExplosionPrefab;
+    public GameManager gameManager;
     void Start() {
 
         isPlaying = false;
@@ -31,6 +32,7 @@ public class Ball : MonoBehaviour {
 
         if(obj.CompareTag("Bottom Edge")) {
             isPlaying = false;
+            gameManager.updateLives(-1);
         }
     }
 
@@ -51,6 +53,9 @@ public class Ball : MonoBehaviour {
         if(obj.transform.CompareTag("Brick")) {
 
             Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
+
+            gameManager.updateScore(obj.gameObject.GetComponent<Bricks>().points);
+
             Destroy(obj.gameObject);
             Destroy(newExplosion.gameObject, 2.5f);
         }
