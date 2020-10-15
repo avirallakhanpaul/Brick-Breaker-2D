@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public int score;
@@ -51,5 +52,9 @@ public class GameManager : MonoBehaviour {
         gameOverCanvas.SetActive(true);
         Instantiate(gameOverCanvas);
         gameOverScore.text = "Score: " + score;
+    }
+
+    public void loadLevel() {
+        SceneManager.LoadScene("Level01");
     }
 }
