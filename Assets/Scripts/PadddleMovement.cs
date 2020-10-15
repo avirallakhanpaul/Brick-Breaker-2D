@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PadddleMovement : MonoBehaviour {
     public float horizontalSpeed = 5.0f;
-    private float leftScreenEdge = -15.0f;
-    private float rightScreenEdge = -11.4f;
+    public float leftScreenEdge = -15.05f;
+    public float rightScreenEdge = -11.4f;
+    public GameManager gameManager;
     void Start() {
 
     }
     void Update() {
+
+        if(gameManager.isGameOver) {
+            return;
+        }
 
         float horizontalAxis = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * horizontalAxis * horizontalSpeed * Time.deltaTime);

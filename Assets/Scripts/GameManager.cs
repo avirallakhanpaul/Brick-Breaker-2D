@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
     public int lives;
     public Text scoreText;
     public Text livesText;
+    public Text gameOverScore;
+    public GameObject gameOverCanvas;
+    public bool isGameOver;
     void Start() {
         setScore();
         setLives();
@@ -26,12 +29,27 @@ public class GameManager : MonoBehaviour {
     }
 
     public void updateLives(int change) {
+
         lives += change;
+
+        if(lives <= 0) {
+            lives = 0;
+            gameOver();
+        }
         setLives();
     }
 
     public void updateScore(int change) {
+
         score += change;
         setScore();
+    }
+
+    void gameOver() {
+
+        isGameOver = true;
+        gameOverCanvas.SetActive(true);
+        Instantiate(gameOverCanvas);
+        gameOverScore.text = "Score: " + score;
     }
 }

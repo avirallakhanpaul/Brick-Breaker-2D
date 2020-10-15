@@ -14,10 +14,14 @@ public class Ball : MonoBehaviour {
     void Start() {
 
         isPlaying = false;
-
+        gameManager.gameOverCanvas.SetActive(false);
         BallRigidBody = GetComponent<Rigidbody2D>();
     }
     void Update() {
+
+        if(gameManager.isGameOver) {
+            return;
+        }
 
         if(!isPlaying) {
             resetBallPosition();
