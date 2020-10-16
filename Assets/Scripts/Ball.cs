@@ -13,9 +13,10 @@ public class Ball : MonoBehaviour {
     public GameManager gameManager;
     void Start() {
 
+        BallRigidBody = GetComponent<Rigidbody2D>();
         isPlaying = false;
         gameManager.gameOverCanvas.SetActive(false);
-        BallRigidBody = GetComponent<Rigidbody2D>();
+        gameManager.levelClearCanvas.SetActive(false);
     }
     void Update() {
 
@@ -23,7 +24,7 @@ public class Ball : MonoBehaviour {
             return;
         }
 
-        if(!isPlaying) {
+        if(!isPlaying) { 
             resetBallPosition();
 
             if(Input.GetButtonDown("Jump")) {
@@ -57,6 +58,8 @@ public class Ball : MonoBehaviour {
         if(obj.transform.CompareTag("Brick")) {
 
             Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
+
+            gameManager.noOfBricks = gameManager.noOfBricks - 1;
 
             gameManager.updateScore(obj.gameObject.GetComponent<Bricks>().points);
 
