@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public Text levelClearScore;
     public GameObject gameOverCanvas;
     public GameObject levelClearCanvas;
+    public bool forMobile;
     public bool isGameOver;
     void Start() {
 

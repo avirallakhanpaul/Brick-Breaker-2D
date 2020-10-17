@@ -6,7 +6,6 @@ public class PadddleMovement : MonoBehaviour {
     public float horizontalSpeed = 5.0f;
     public float leftScreenEdge = -15.05f;
     public float rightScreenEdge = -11.4f;
-    public bool forMobile;
     public GameManager gameManager;
     void Start() {
 
@@ -17,7 +16,7 @@ public class PadddleMovement : MonoBehaviour {
             return;
         }
 
-        if(forMobile) {
+        if(gameManager.forMobile) {
 
             float horizontalAxisSpeed = Input.acceleration.x * horizontalSpeed;
             transform.Translate(Vector2.right * horizontalAxisSpeed * Time.deltaTime);
