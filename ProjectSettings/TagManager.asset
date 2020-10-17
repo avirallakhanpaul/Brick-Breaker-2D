@@ -7,6 +7,8 @@ TagManager:
   - Bottom Edge
   - Paddle
   - Brick
+  - Life Powerup
+  - Death Powerup
   layers:
   - Default
   - TransparentFX

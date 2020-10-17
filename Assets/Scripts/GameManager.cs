@@ -36,12 +36,15 @@ public class GameManager : MonoBehaviour {
 
     public void updateLives(int change) {
 
+        Debug.Log("Updated Life");
+
         lives += change;
 
         if(lives <= 0) {
             lives = 0;
             gameOver();
         }
+        
         setLives();
     }
 
@@ -59,14 +62,12 @@ public class GameManager : MonoBehaviour {
 
         isGameOver = true;
         gameOverCanvas.SetActive(true);
-        Instantiate(gameOverCanvas);
         gameOverScore.text = "Score: " + score;
     }
 
     void levelClear() {
         isGameOver = true;
         levelClearCanvas.SetActive(true);
-        Instantiate(levelClearCanvas);
         levelClearScore.text = "Score: " + score;
     }
 

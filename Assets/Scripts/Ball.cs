@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour {
     public float ballOffsetY = 0.25f;
     private bool isPlaying;
     public Transform BrickExplosionPrefab;
+    public Transform LifePowerUpPrefab;
+    public Transform DeathPowerUpPrefab;
     public GameManager gameManager;
     void Start() {
 
@@ -21,6 +23,7 @@ public class Ball : MonoBehaviour {
     void Update() {
 
         if(gameManager.isGameOver) {
+            BallRigidBody.gameObject.SetActive(false);
             return;
         }
 
@@ -55,16 +58,26 @@ public class Ball : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D obj) {
 
-        if(obj.transform.CompareTag("Brick")) {
+        if(isPlaying) {
 
-            Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
+            if (obj.transform.CompareTag("Brick")) {
 
-            gameManager.noOfBricks = gameManager.noOfBricks - 1;
+                Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
 
-            gameManager.updateScore(obj.gameObject.GetComponent<Bricks>().points);
+                gameManager.noOfBricks = gameManager.noOfBricks - 1;
 
-            Destroy(obj.gameObject);
-            Destroy(newExplosion.gameObject, 2.5f);
+                gameManager.updateScore(obj.gameObject.GetComponent<Bricks>().points);
+
+                Destroy(obj.gameObject);
+                Destroy(newExplosion.gameObject, 2.5f);
+
+                if (Mathf.Floor(Random.Range(0.0f, 12.0f)) == Mathf.Floor(Random.Range(0.0f, 12.0f))) {
+                    Instantiate(LifePowerUpPrefab, obj.transform.position, obj.transform.rotation);
+                }
+                else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
+                    Instantiate(DeathPowerUpPrefab, obj.transform.position, obj.transform.rotation);
+                }
+            }
         }
     }
 }

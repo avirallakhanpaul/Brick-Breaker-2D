@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PadddleMovement : MonoBehaviour {
+public class Padddle : MonoBehaviour {
     public float horizontalSpeed = 5.0f;
     public float leftScreenEdge = -15.05f;
     public float rightScreenEdge = -11.4f;
     public GameManager gameManager;
-    void Start() {
-
-    }
     void Update() {
 
         if(gameManager.isGameOver) {
@@ -32,6 +29,17 @@ public class PadddleMovement : MonoBehaviour {
 
         if(transform.position.x < leftScreenEdge) {
             transform.position = new Vector2(leftScreenEdge, transform.position.y);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D obj) {
+
+        if(obj.gameObject.CompareTag("Life Powerup")) {
+            gameManager.updateLives(obj.gameObject.GetComponent<PowerUp>().LifePowerUp);
+            Destroy(obj.gameObject);
+        } else if(obj.gameObject.CompareTag("Death Powerup")) {
+            gameManager.updateLives(obj.gameObject.GetComponent<PowerUp>().DeathPowerUp);
+            Destroy(obj.gameObject);
         }
     }
 }
