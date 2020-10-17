@@ -6,6 +6,7 @@ public class Padddle : MonoBehaviour {
     public float horizontalSpeed = 5.0f;
     public float leftScreenEdge = -15.05f;
     public float rightScreenEdge = -11.4f;
+    public GameObject BallPrefab;
     public GameManager gameManager;
     void Update() {
 
@@ -35,11 +36,16 @@ public class Padddle : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D obj) {
 
         if(obj.gameObject.CompareTag("Life Powerup")) {
+
             gameManager.updateLives(obj.gameObject.GetComponent<PowerUp>().LifePowerUp);
             Destroy(obj.gameObject);
         } else if(obj.gameObject.CompareTag("Death Powerup")) {
+
             gameManager.updateLives(obj.gameObject.GetComponent<PowerUp>().DeathPowerUp);
             Destroy(obj.gameObject);
+        } else if(obj.gameObject.CompareTag("Split Powerup")) {
+            
+            GameObject newBall = Instantiate(BallPrefab);
         }
     }
 }

@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     void setScore() {
         scoreText.text = "Score: " + score;
         if(score == 10) {
-            Debug.Log("Score = 10");
+            // Debug.Log("Score = 10");
         }
     }
 
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 
     public void updateLives(int change) {
 
-        Debug.Log("Updated Life");
+        // Debug.Log("Updated Life");
 
         lives += change;
 

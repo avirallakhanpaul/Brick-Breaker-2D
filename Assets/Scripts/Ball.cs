@@ -12,14 +12,25 @@ public class Ball : MonoBehaviour {
     public Transform BrickExplosionPrefab;
     public Transform LifePowerUpPrefab;
     public Transform DeathPowerUpPrefab;
+    public Transform SplitPowerUpPrefab;
     public GameManager gameManager;
     void Start() {
 
         BallRigidBody = GetComponent<Rigidbody2D>();
-        isPlaying = false;
+        gameManager = FindObjectOfType<GameManager>();
+        Debug.Log("Start()");
         gameManager.gameOverCanvas.SetActive(false);
         gameManager.levelClearCanvas.SetActive(false);
+
+        if(BallRigidBody.name.Contains("Clone")) {
+
+            isPlaying = false;
+            startGame();
+        } else {
+            isPlaying = false;
+        }
     }
+
     void Update() {
 
         if(gameManager.isGameOver) {
@@ -27,7 +38,8 @@ public class Ball : MonoBehaviour {
             return;
         }
 
-        if(!isPlaying) { 
+        if(!isPlaying) {
+            Debug.Log("resetBallPosition()");
             resetBallPosition();
 
             if(Input.GetButtonDown("Jump")) {
@@ -71,13 +83,18 @@ public class Ball : MonoBehaviour {
                 Destroy(obj.gameObject);
                 Destroy(newExplosion.gameObject, 2.5f);
 
-                if (Mathf.Floor(Random.Range(0.0f, 12.0f)) == Mathf.Floor(Random.Range(0.0f, 12.0f))) {
+                if(Mathf.Floor(Random.Range(0.0f, 12.0f)) == Mathf.Floor(Random.Range(0.0f, 12.0f))) {
                     Instantiate(LifePowerUpPrefab, obj.transform.position, obj.transform.rotation);
-                }
-                else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
+                } else if(Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
                     Instantiate(DeathPowerUpPrefab, obj.transform.position, obj.transform.rotation);
+                } else if(Mathf.Floor(Random.Range(0.0f, 3.0f)) == Mathf.Floor(Random.Range(0.0f, 3.0f))) {
+                    Instantiate(SplitPowerUpPrefab, obj.transform.position, obj.transform.rotation);
                 }
             }
         }
     }
 }
+
+// Destroy Power-ups when they touch the bottom edge of the screen
+// Create and add other levels (min: 2 levels) 
+// Add Texttures to each sprite as well as add background and music to the game

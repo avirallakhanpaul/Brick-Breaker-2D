@@ -9,6 +9,7 @@ TagManager:
   - Brick
   - Life Powerup
   - Death Powerup
+  - Split Powerup
   layers:
   - Default
   - TransparentFX
