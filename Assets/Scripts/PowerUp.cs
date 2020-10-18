@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour {
 
+    public GameObject powerupPrefab;
     public int LifePowerUp = 1;
     public int DeathPowerUp = -1;
-    // public GameObject lifePU;
+    
+    void OnTriggerEnter2D(Collider2D obj) {
 
-    // void Update() {
-
-    //     lifePU.transform.Rotate(0, 0, 45 * Time.deltaTime);
-    // }
+        if(obj.CompareTag("Bottom Edge")) {
+            Destroy(powerupPrefab.gameObject);
+        }
+    }
 }

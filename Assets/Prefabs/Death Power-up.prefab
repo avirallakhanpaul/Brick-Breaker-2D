@@ -145,3 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cd74afd7aeedf468e7c2c37ef9bff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupPrefab: {fileID: 6373256240664233932}
+  LifePowerUp: 1
+  DeathPowerUp: -1

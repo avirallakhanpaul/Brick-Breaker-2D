@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour {
     public float force = 300f;
     public float ballOffsetY = 0.25f;
     private bool isPlaying;
+    private Touch touch;
     public Transform BrickExplosionPrefab;
     public Transform LifePowerUpPrefab;
     public Transform DeathPowerUpPrefab;
@@ -42,7 +43,16 @@ public class Ball : MonoBehaviour {
             Debug.Log("resetBallPosition()");
             resetBallPosition();
 
-            if(Input.GetButtonDown("Jump")) {
+            if(gameManager.forMobile) {
+
+                if(Input.touchCount >= 0) {
+                    touch = Input.GetTouch(0);
+
+                    if(touch.phase == TouchPhase.Began) {
+                        startGame();
+                    }
+                }
+            } else if(Input.GetButtonDown("Jump")) {
                 startGame();
             }
         }
@@ -72,29 +82,39 @@ public class Ball : MonoBehaviour {
 
         if(isPlaying) {
 
-            if (obj.transform.CompareTag("Brick")) {
+            if(obj.transform.CompareTag("Brick")) {
 
-                Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
+                Bricks brickScript = obj.gameObject.GetComponent<Bricks>();
 
-                gameManager.noOfBricks = gameManager.noOfBricks - 1;
+                if(brickScript.hits > 1) {
+                    brickScript.breakBrick();
+                } else {
 
-                gameManager.updateScore(obj.gameObject.GetComponent<Bricks>().points);
+                    Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
 
-                Destroy(obj.gameObject);
-                Destroy(newExplosion.gameObject, 2.5f);
+                    gameManager.noOfBricks = gameManager.noOfBricks - 1;
 
-                if(Mathf.Floor(Random.Range(0.0f, 12.0f)) == Mathf.Floor(Random.Range(0.0f, 12.0f))) {
-                    Instantiate(LifePowerUpPrefab, obj.transform.position, obj.transform.rotation);
-                } else if(Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
-                    Instantiate(DeathPowerUpPrefab, obj.transform.position, obj.transform.rotation);
-                } else if(Mathf.Floor(Random.Range(0.0f, 3.0f)) == Mathf.Floor(Random.Range(0.0f, 3.0f))) {
-                    Instantiate(SplitPowerUpPrefab, obj.transform.position, obj.transform.rotation);
+                    gameManager.updateScore(brickScript.points);
+
+                    Destroy(obj.gameObject);
+                    Destroy(newExplosion.gameObject, 2.5f);
+
+                    if (Mathf.Floor(Random.Range(0.0f, 12.0f)) == Mathf.Floor(Random.Range(0.0f, 12.0f))) {
+
+                        Instantiate(LifePowerUpPrefab, obj.transform.position, obj.transform.rotation);
+                    } else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
+
+                        Instantiate(DeathPowerUpPrefab, obj.transform.position, obj.transform.rotation);
+                    } else if (Mathf.Floor(Random.Range(0.0f, 15.0f)) == Mathf.Floor(Random.Range(0.0f, 15.0f))) {
+
+                        Instantiate(SplitPowerUpPrefab, obj.transform.position, obj.transform.rotation);
+                    }
                 }
             }
         }
     }
 }
 
-// Destroy Power-ups when they touch the bottom edge of the screen
+// Destroy Power-ups when they touch the bottom edge of the screen X
 // Create and add other levels (min: 2 levels) 
 // Add Texttures to each sprite as well as add background and music to the game
