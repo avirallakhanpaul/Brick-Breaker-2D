@@ -736,7 +736,7 @@ MonoBehaviour:
   levelClearScore: {fileID: 739147955}
   gameOverCanvas: {fileID: 11111897}
   levelClearCanvas: {fileID: 1519973518}
-  forMobile: 1
+  forMobile: 0
   isGameOver: 0
 --- !u!1001 &264163797
 PrefabInstance:
@@ -800,6 +800,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -869,6 +875,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -1424,6 +1436,7 @@ GameObject:
   - component: {fileID: 829626456}
   - component: {fileID: 829626458}
   - component: {fileID: 829626457}
+  - component: {fileID: 829626459}
   m_Layer: 5
   m_Name: Lives Text
   m_TagString: Untagged
@@ -1491,6 +1504,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829626455}
   m_CullTransparentMesh: 0
+--- !u!95 &829626459
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829626455}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 12d7a69e54d633a46b68b63342d20755, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &845965552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4917130748320473208, guid: 9db7ec68e904e40409dfba80d84ee8bf,
@@ -1633,6 +1665,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -1823,6 +1861,7 @@ GameObject:
   - component: {fileID: 881176686}
   - component: {fileID: 881176688}
   - component: {fileID: 881176687}
+  - component: {fileID: 881176689}
   m_Layer: 5
   m_Name: Score Text
   m_TagString: Untagged
@@ -1874,7 +1913,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 120
+    m_MaxSize: 130
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1890,6 +1929,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881176685}
   m_CullTransparentMesh: 0
+--- !u!95 &881176689
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881176685}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9d8c680816d9c64c93c0794a0ab6fe6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &905660079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2394,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -2489,6 +2553,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -2579,7 +2649,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 229208944}
-        m_MethodName: loadLevel
+        m_MethodName: playAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3278,7 +3348,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 229208944}
-        m_MethodName: loadLevel
+        m_MethodName: nextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3488,6 +3558,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -3569,6 +3645,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -3644,6 +3726,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -4177,6 +4265,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -4398,6 +4492,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917130748320473211, guid: 9db7ec68e904e40409dfba80d84ee8bf,
+        type: 3}
+      propertyPath: brickExplosionPrefab
+      value: 
+      objectReference: {fileID: 8744887949821261336, guid: 774d6868572d593449709802bdb9aea7,
+        type: 3}
     - target: {fileID: 4917130748320473212, guid: 9db7ec68e904e40409dfba80d84ee8bf,
         type: 3}
       propertyPath: m_Name
@@ -4790,7 +4890,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 229208944}
-        m_MethodName: loadLevel
+        m_MethodName: playAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

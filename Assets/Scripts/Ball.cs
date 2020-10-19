@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour {
     public float ballOffsetY = 0.25f;
     private bool isPlaying;
     private Touch touch;
-    public Transform BrickExplosionPrefab;
+    // public Transform BrickExplosionPrefab;
     public Transform LifePowerUpPrefab;
     public Transform DeathPowerUpPrefab;
     public Transform SplitPowerUpPrefab;
@@ -90,7 +90,7 @@ public class Ball : MonoBehaviour {
                     brickScript.breakBrick();
                 } else {
 
-                    Transform newExplosion = Instantiate(BrickExplosionPrefab, obj.transform.position, obj.transform.rotation);
+                    Transform newExplosion = Instantiate(brickScript.brickExplosionPrefab.transform, obj.transform.position, obj.transform.rotation);
 
                     gameManager.noOfBricks = gameManager.noOfBricks - 1;
 

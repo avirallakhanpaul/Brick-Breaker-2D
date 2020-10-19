@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public Text levelClearScore;
     public GameObject gameOverCanvas;
     public GameObject levelClearCanvas;
+    private int levelNumber;
     public bool forMobile;
     public bool isGameOver;
     void Start() {
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour {
         setScore();
         setLives();
         noOfBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
+        
+        levelNumber = 1;
     }
 
     void setScore() {
@@ -66,16 +69,27 @@ public class GameManager : MonoBehaviour {
     }
 
     void levelClear() {
+
         isGameOver = true;
         levelClearCanvas.SetActive(true);
         levelClearScore.text = "Score: " + score;
     }
 
-    public void loadLevel() {
-        SceneManager.LoadScene("Level01");
+    public void playAgain() {
+
+        SceneManager.LoadScene("Level0" + levelNumber);
+        Debug.Log("Level0" + levelNumber);
+    }
+
+    public void nextLevel() {
+
+        levelNumber++;
+        SceneManager.LoadScene("Level0" + levelNumber);
+        Debug.Log("Level0" + levelNumber);
     }
 
     public void quitGame() {
+
         Application.Quit();
         Debug.Log("Game has been closed");
     }
