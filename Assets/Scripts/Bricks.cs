@@ -15,6 +15,8 @@ public class Bricks : MonoBehaviour {
         GetComponent<SpriteRenderer>().sprite = brickSprite;
 
         Vector2 scale = new Vector2(0.671f, 0.810f);
+        Vector2 colliderScale = new Vector2(1.207f, 0.301f);
         GetComponent<Transform>().localScale = scale;
+        GetComponent<BoxCollider2D>().size = colliderScale;
     }
 }

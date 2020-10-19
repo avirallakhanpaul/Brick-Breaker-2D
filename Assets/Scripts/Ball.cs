@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour {
     public float ballOffsetY = 0.25f;
     private bool isPlaying;
     private Touch touch;
-    // public Transform BrickExplosionPrefab;
+    private Animation anim;
     public Transform LifePowerUpPrefab;
     public Transform DeathPowerUpPrefab;
     public Transform SplitPowerUpPrefab;
@@ -19,7 +19,6 @@ public class Ball : MonoBehaviour {
 
         BallRigidBody = GetComponent<Rigidbody2D>();
         gameManager = FindObjectOfType<GameManager>();
-        Debug.Log("Start()");
         gameManager.gameOverCanvas.SetActive(false);
         gameManager.levelClearCanvas.SetActive(false);
 
@@ -40,7 +39,6 @@ public class Ball : MonoBehaviour {
         }
 
         if(!isPlaying) {
-            Debug.Log("resetBallPosition()");
             resetBallPosition();
 
             if(gameManager.forMobile) {
@@ -86,10 +84,13 @@ public class Ball : MonoBehaviour {
 
                 Bricks brickScript = obj.gameObject.GetComponent<Bricks>();
 
+                // anim = gameObject.GetComponent<Animation>();
+                // anim.Play("ScoreIncrement");
+
                 if(brickScript.hits > 1) {
                     brickScript.breakBrick();
                 } else {
-
+                    
                     Transform newExplosion = Instantiate(brickScript.brickExplosionPrefab.transform, obj.transform.position, obj.transform.rotation);
 
                     gameManager.noOfBricks = gameManager.noOfBricks - 1;
@@ -114,7 +115,3 @@ public class Ball : MonoBehaviour {
         }
     }
 }
-
-// Destroy Power-ups when they touch the bottom edge of the screen X
-// Create and add other levels (min: 2 levels) 
-// Add Texttures to each sprite as well as add background and music to the game

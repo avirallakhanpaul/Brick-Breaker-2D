@@ -19,8 +19,20 @@ public class GameManager : MonoBehaviour {
     public bool isGameOver;
     void Start() {
 
+        Scene currScene = SceneManager.GetActiveScene();
+        
+        if (currScene.buildIndex == 0)
+        {
+            lives = 2;
+        }
+        else if (currScene.buildIndex > 0)
+        {
+            lives = 3;
+        }
+        
         setScore();
         setLives();
+
         noOfBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
         
         levelNumber = 1;
@@ -28,9 +40,6 @@ public class GameManager : MonoBehaviour {
 
     void setScore() {
         scoreText.text = "Score: " + score;
-        if(score == 10) {
-            // Debug.Log("Score = 10");
-        }
     }
 
     void setLives() {
@@ -38,8 +47,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void updateLives(int change) {
-
-        // Debug.Log("Updated Life");
 
         lives += change;
 
@@ -76,21 +83,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void playAgain() {
-
         SceneManager.LoadScene("Level0" + levelNumber);
-        Debug.Log("Level0" + levelNumber);
     }
 
     public void nextLevel() {
 
         levelNumber++;
         SceneManager.LoadScene("Level0" + levelNumber);
-        Debug.Log("Level0" + levelNumber);
     }
 
     public void quitGame() {
-
         Application.Quit();
-        Debug.Log("Game has been closed");
     }
 }
