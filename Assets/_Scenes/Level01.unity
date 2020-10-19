@@ -858,7 +858,7 @@ MonoBehaviour:
   levelClearScore: {fileID: 739147955}
   gameOverCanvas: {fileID: 11111897}
   levelClearCanvas: {fileID: 1519973518}
-  forMobile: 0
+  forMobile: 1
   isGameOver: 0
 --- !u!1001 &264163797
 PrefabInstance:
@@ -1142,7 +1142,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.120817, g: 0.12495548, b: 0.14150941, a: 0}
+  m_BackGroundColor: {r: 0.2060151, g: 0.19139372, b: 0.21698111, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

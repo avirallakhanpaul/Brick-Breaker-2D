@@ -81,12 +81,16 @@ public class GameManager : MonoBehaviour {
         livesTextGreen.gameObject.SetActive(false);
         livesTextRed.gameObject.SetActive(false);
         livesText.gameObject.SetActive(true);
+        scoreText.gameObject.SetActive(true);
+        scoreTextGreen.gameObject.SetActive(false);
     }
 
     public void updateScore(int change) {
         
         if(change > 0) {
-            scoreTextGreen.gameObject.SetActive(false);
+            scoreText.gameObject.SetActive(false);
+            scoreTextGreen.gameObject.SetActive(true);
+            Invoke("animate", 0.5f);
         }
         
         score += change;
