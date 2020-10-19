@@ -10,7 +10,9 @@ public class PowerUp : MonoBehaviour {
     
     void OnTriggerEnter2D(Collider2D obj) {
 
-        if(obj.CompareTag("Bottom Edge")) {
+        if(obj.CompareTag("Paddle")) {
+            Destroy(GetComponent<GameObject>());
+        } else if(obj.CompareTag("Bottom Edge")) {
             Destroy(powerupPrefab.gameObject);
         }
     }

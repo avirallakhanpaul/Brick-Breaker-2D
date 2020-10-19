@@ -17,19 +17,17 @@ public class GameManager : MonoBehaviour {
     public Text levelClearScore;
     public GameObject gameOverCanvas;
     public GameObject levelClearCanvas;
-    private int levelNumber;
+    private int levelNumber = 1;
     public bool forMobile;
     public bool isGameOver;
     void Start() {
 
         Scene currScene = SceneManager.GetActiveScene();
         
-        if (currScene.buildIndex == 0)
-        {
+        if (currScene.buildIndex == 0) {
             lives = 2;
         }
-        else if (currScene.buildIndex > 0)
-        {
+        else if (currScene.buildIndex > 0) {
             lives = 3;
         }
         
@@ -37,8 +35,6 @@ public class GameManager : MonoBehaviour {
         setLives();
 
         noOfBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
-        
-        levelNumber = 1;
     }
 
     void setScore() {
@@ -116,13 +112,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void playAgain() {
-        SceneManager.LoadScene("Level0" + levelNumber);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void nextLevel() {
-
-        levelNumber++;
-        SceneManager.LoadScene("Level0" + levelNumber);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void quitGame() {
