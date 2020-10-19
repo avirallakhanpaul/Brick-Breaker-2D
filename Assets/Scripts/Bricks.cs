@@ -6,11 +6,14 @@ public class Bricks : MonoBehaviour {
 
     public int points;
     public int hits;
-    public Material brickHit1Material;
+    public Sprite BrickSprite;
 
     public void breakBrick() {
         
         hits--;
-        GetComponent<SpriteRenderer>().material = brickHit1Material;
+        GetComponent<SpriteRenderer>().sprite = BrickSprite;
+
+        Vector2 scale = new Vector2(0.671f, 0.810f);
+        GetComponent<Transform>().localScale = scale;
     }
 }
