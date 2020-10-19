@@ -16,6 +16,7 @@ public class Padddle : MonoBehaviour {
 
         if(gameManager.forMobile) {
 
+            horizontalSpeed = 12.0f;
             float horizontalAxisSpeed = Input.acceleration.x * horizontalSpeed;
             transform.Translate(Vector2.right * horizontalAxisSpeed * Time.deltaTime);
         } else {

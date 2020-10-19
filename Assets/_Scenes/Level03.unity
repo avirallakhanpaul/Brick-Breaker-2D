@@ -892,7 +892,7 @@ MonoBehaviour:
   levelClearScore: {fileID: 739147955}
   gameOverCanvas: {fileID: 11111897}
   levelClearCanvas: {fileID: 1519973518}
-  forMobile: 0
+  forMobile: 1
   isGameOver: 0
 --- !u!1001 &264163797
 PrefabInstance:

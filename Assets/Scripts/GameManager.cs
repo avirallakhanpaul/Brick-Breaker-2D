@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour {
     public int lives;
     public int noOfBricks;
     public Text scoreText;
+    public Text scoreTextGreen;
     public Text livesText;
+    public Text livesTextGreen;
+    public Text livesTextRed;
     public Text gameOverScore;
     public Text levelClearScore;
     public GameObject gameOverCanvas;
@@ -40,13 +43,28 @@ public class GameManager : MonoBehaviour {
 
     void setScore() {
         scoreText.text = "Score: " + score;
+        scoreTextGreen.text = "Score: " + score;
     }
 
     void setLives() {
         livesText.text = "Lives: " + lives;
+        livesTextGreen.text = "Lives: " + lives;
+        livesTextRed.text = "Lives: " + lives;
     }
 
     public void updateLives(int change) {
+
+        if(change > 0) {
+
+            livesText.gameObject.SetActive(false);
+            livesTextGreen.gameObject.SetActive(true);
+            Invoke("animate", 0.5f);
+        } else if(change < 0) {
+
+            livesText.gameObject.SetActive(false);
+            livesTextRed.gameObject.SetActive(true);
+            Invoke("animate", 0.5f);
+        }
 
         lives += change;
 
@@ -58,8 +76,19 @@ public class GameManager : MonoBehaviour {
         setLives();
     }
 
-    public void updateScore(int change) {
+    void animate() {
 
+        livesTextGreen.gameObject.SetActive(false);
+        livesTextRed.gameObject.SetActive(false);
+        livesText.gameObject.SetActive(true);
+    }
+
+    public void updateScore(int change) {
+        
+        if(change > 0) {
+            scoreTextGreen.gameObject.SetActive(false);
+        }
+        
         score += change;
         setScore();
         

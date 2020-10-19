@@ -84,9 +84,6 @@ public class Ball : MonoBehaviour {
 
                 Bricks brickScript = obj.gameObject.GetComponent<Bricks>();
 
-                // anim = gameObject.GetComponent<Animation>();
-                // anim.Play("ScoreIncrement");
-
                 if(brickScript.hits > 1) {
                     brickScript.breakBrick();
                 } else {
@@ -100,7 +97,7 @@ public class Ball : MonoBehaviour {
                     Destroy(obj.gameObject);
                     Destroy(newExplosion.gameObject, 2.5f);
 
-                    if (Mathf.Floor(Random.Range(0.0f, 12.0f)) == Mathf.Floor(Random.Range(0.0f, 12.0f))) {
+                    if (Mathf.Floor(Random.Range(0.0f, 1.0f)) == Mathf.Floor(Random.Range(0.0f, 1.0f))) {
 
                         Instantiate(LifePowerUpPrefab, obj.transform.position, obj.transform.rotation);
                     } else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
