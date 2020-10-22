@@ -725,8 +725,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  lives: 2
+  lives: 10
   noOfBricks: 0
+  ballClones: 0
   scoreText: {fileID: 881176687}
   scoreTextGreen: {fileID: 1502595570}
   livesText: {fileID: 829626457}
@@ -1003,12 +1004,12 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.120817, g: 0.12495548, b: 0.14150941, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 64.74621
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1017,8 +1018,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 21
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -3954,6 +3955,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4723035582990660047, guid: 1dcc5c1ee627bdb4abc31139ff07518d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723035582990660047, guid: 1dcc5c1ee627bdb4abc31139ff07518d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dcc5c1ee627bdb4abc31139ff07518d, type: 3}
 --- !u!4 &1671723128 stripped
@@ -5694,6 +5705,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2053144821475088632, guid: b38a09d8d75467a499a8167f85d7753f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ball Position
+      objectReference: {fileID: 0}
     - target: {fileID: 7957800339656503868, guid: b38a09d8d75467a499a8167f85d7753f,
         type: 3}
       propertyPath: gameManager
@@ -5709,6 +5725,12 @@ PrefabInstance:
       propertyPath: BallPrefab
       value: 
       objectReference: {fileID: 407224457}
+    - target: {fileID: 7957800339656503868, guid: b38a09d8d75467a499a8167f85d7753f,
+        type: 3}
+      propertyPath: BallClonePrefab
+      value: 
+      objectReference: {fileID: 4723035582990660047, guid: f211b086bbf56794cb52789375ab43bb,
+        type: 3}
     m_RemovedComponents:
     - {fileID: -1474394286809794851, guid: b38a09d8d75467a499a8167f85d7753f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b38a09d8d75467a499a8167f85d7753f, type: 3}

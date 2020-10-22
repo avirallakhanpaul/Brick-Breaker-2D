@@ -10,6 +10,9 @@ TagManager:
   - Life Powerup
   - Death Powerup
   - Split Powerup
+  - Ball Clone
+  - Ball Position
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -19,8 +22,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ball
+  - Ball Clone
   - 
   - 
   - 

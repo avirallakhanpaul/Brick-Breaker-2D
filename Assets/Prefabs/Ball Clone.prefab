@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4723035582990660043}
   - component: {fileID: 4723035582990660036}
   - component: {fileID: 4723035582990660037}
-  m_Layer: 5
-  m_Name: Ball
-  m_TagString: Untagged
+  m_Layer: 9
+  m_Name: Ball Clone
+  m_TagString: Ball Clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0.9535438, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,7 +164,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55ac2e97b0324b44e8c18d3cb4f7953b, type: 2}
+  - {fileID: 2100000, guid: 05f2cef781d14274eb14d05baa778244, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

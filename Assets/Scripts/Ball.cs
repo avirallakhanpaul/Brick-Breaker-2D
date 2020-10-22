@@ -10,11 +10,11 @@ public class Ball : MonoBehaviour {
     public float ballOffsetY = 0.25f;
     private bool isPlaying;
     private Touch touch;
-    private Animation anim;
     public Transform LifePowerUpPrefab;
     public Transform DeathPowerUpPrefab;
     public Transform SplitPowerUpPrefab;
     public GameManager gameManager;
+
     void Start() {
 
         BallRigidBody = GetComponent<Rigidbody2D>();
@@ -22,36 +22,41 @@ public class Ball : MonoBehaviour {
         gameManager.gameOverCanvas.SetActive(false);
         gameManager.levelClearCanvas.SetActive(false);
 
-        if(BallRigidBody.name.Contains("Clone")) {
+        isPlaying = false;
 
-            isPlaying = false;
+        if(BallRigidBody.name.Contains("Clone")) {
             startGame();
-        } else {
-            isPlaying = false;
         }
     }
 
     void Update() {
 
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.ClampMagnitude(this.gameObject.GetComponent<Rigidbody2D>().velocity, 8);
+
         if(gameManager.isGameOver) {
+
             BallRigidBody.gameObject.SetActive(false);
             return;
         }
 
         if(!isPlaying) {
-            resetBallPosition();
 
-            if(gameManager.forMobile) {
+            if(gameManager.ballClones == 0 && this.gameObject.name == "Ball") {
 
-                if(Input.touchCount >= 0) {
-                    touch = Input.GetTouch(0);
+                resetBallPosition();
 
-                    if(touch.phase == TouchPhase.Began) {
-                        startGame();
+                if(gameManager.forMobile) {
+
+                    if(Input.touchCount >= 0) {
+                        touch = Input.GetTouch(0);
+
+                        if(touch.phase == TouchPhase.Began) {
+                            startGame();
+                        }
                     }
+                } else if(Input.GetButtonDown("Jump")) {
+                    startGame();
                 }
-            } else if(Input.GetButtonDown("Jump")) {
-                startGame();
             }
         }
     }
@@ -59,6 +64,13 @@ public class Ball : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D obj) {
 
         if(obj.CompareTag("Bottom Edge")) {
+
+            if(this.gameObject.name == "Ball Clone(Clone)") {
+
+                gameManager.ballClones--;
+                Destroy(this.gameObject);
+            }
+            
             isPlaying = false;
             gameManager.updateLives(-1);
         }
@@ -67,7 +79,7 @@ public class Ball : MonoBehaviour {
     void resetBallPosition() {
 
         BallRigidBody.velocity = Vector2.zero;
-        transform.position = new Vector2((BallPosition.transform.position.x), BallPosition.transform.position.y);
+        BallRigidBody.gameObject.transform.position = new Vector2((BallPosition.transform.position.x), BallPosition.transform.position.y);
     }
 
     void startGame() {
@@ -97,13 +109,13 @@ public class Ball : MonoBehaviour {
                     Destroy(obj.gameObject);
                     Destroy(newExplosion.gameObject, 2.5f);
 
-                    if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
+                    if (Mathf.Floor(Random.Range(0.0f, 12.0f)) == Mathf.Floor(Random.Range(0.0f, 12.0f))) {
 
                         Instantiate(LifePowerUpPrefab, obj.transform.position, obj.transform.rotation);
-                    } else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
+                    } else if (Mathf.Floor(Random.Range(0.0f, 8.0f)) == Mathf.Floor(Random.Range(0.0f, 8.0f))) {
 
                         Instantiate(DeathPowerUpPrefab, obj.transform.position, obj.transform.rotation);
-                    } else if (Mathf.Floor(Random.Range(0.0f, 1.0f)) == Mathf.Floor(Random.Range(0.0f, 1.0f))) {
+                    } else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
 
                         Instantiate(SplitPowerUpPrefab, obj.transform.position, obj.transform.rotation);
                     }

@@ -849,6 +849,7 @@ MonoBehaviour:
   score: 0
   lives: 2
   noOfBricks: 0
+  ballClones: 0
   scoreText: {fileID: 881176687}
   scoreTextGreen: {fileID: 975785611}
   livesText: {fileID: 829626457}
@@ -858,7 +859,7 @@ MonoBehaviour:
   levelClearScore: {fileID: 739147955}
   gameOverCanvas: {fileID: 11111897}
   levelClearCanvas: {fileID: 1519973518}
-  forMobile: 0
+  forMobile: 1
   isGameOver: 0
 --- !u!1001 &264163797
 PrefabInstance:
@@ -1143,12 +1144,12 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.2060151, g: 0.19139372, b: 0.21698111, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 64.74621
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1157,8 +1158,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 21
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -3896,6 +3897,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4723035582990660047, guid: 1dcc5c1ee627bdb4abc31139ff07518d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dcc5c1ee627bdb4abc31139ff07518d, type: 3}
 --- !u!4 &1671723128 stripped
@@ -4173,13 +4179,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832790431}
-  m_LocalRotation: {x: 0, y: 0, z: 0.004363274, w: 0.9999905}
+  m_LocalRotation: {x: 0, y: 0, z: 0.008726558, w: 0.999962}
   m_LocalPosition: {x: -10.1, y: 0.31, z: 0}
   m_LocalScale: {x: 0.1, y: 1.2747899, z: 1}
   m_Children: []
   m_Father: {fileID: 127337351}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1}
 --- !u!61 &1832790433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5011,13 +5017,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066418051}
-  m_LocalRotation: {x: 0, y: 0, z: -0.004363368, w: 0.9999905}
+  m_LocalRotation: {x: 0, y: 0, z: -0.008726465, w: 0.999962}
   m_LocalPosition: {x: -16.35, y: 0.29, z: 0}
   m_LocalScale: {x: 0.1, y: 1.2747899, z: 1}
   m_Children: []
   m_Father: {fileID: 127337351}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1}
 --- !u!61 &2066418053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5514,6 +5520,12 @@ PrefabInstance:
       propertyPath: BallPrefab
       value: 
       objectReference: {fileID: 407224457}
+    - target: {fileID: 7957800339656503868, guid: b38a09d8d75467a499a8167f85d7753f,
+        type: 3}
+      propertyPath: BallClonePrefab
+      value: 
+      objectReference: {fileID: 4723035582990660047, guid: f211b086bbf56794cb52789375ab43bb,
+        type: 3}
     m_RemovedComponents:
     - {fileID: -1474394286809794851, guid: b38a09d8d75467a499a8167f85d7753f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b38a09d8d75467a499a8167f85d7753f, type: 3}

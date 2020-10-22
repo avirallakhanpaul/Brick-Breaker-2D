@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Padddle : MonoBehaviour {
+    
     public float horizontalSpeed = 5.0f;
     public float leftScreenEdge = -15.05f;
     public float rightScreenEdge = -11.4f;
-    public GameObject BallPrefab;
+    public GameObject BallClonePrefab;
     public GameManager gameManager;
+    
     void Update() {
 
         if(gameManager.isGameOver) {
@@ -46,7 +48,26 @@ public class Padddle : MonoBehaviour {
             Destroy(obj.gameObject);
         } else if(obj.gameObject.CompareTag("Split Powerup")) {
             
-            GameObject newBall = Instantiate(BallPrefab);
+            GameObject newBall = Instantiate(BallClonePrefab);
+            Debug.Log(GameObject.FindGameObjectWithTag("Ball"));
+
+            if(GameObject.FindGameObjectWithTag("Ball") != null) {
+
+                newBall.transform.position = GameObject.FindGameObjectWithTag("Ball").transform.position;
+            } else {
+                newBall.transform.position = GameObject.FindGameObjectWithTag("Ball Clone").transform.position;
+            }
+
+            gameManager.ballClones++;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D obj) {
+
+        if(obj.gameObject.name == "Ball" || obj.gameObject.name == "Ball Clone") {
+
+            obj.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 50f);
+            Debug.Log("Force Added");
         }
     }
 }

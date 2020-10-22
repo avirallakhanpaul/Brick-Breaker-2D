@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public int score;
     public int lives;
     public int noOfBricks;
+    public int ballClones = 0;
     public Text scoreText;
     public Text scoreTextGreen;
     public Text livesText;
@@ -17,7 +18,6 @@ public class GameManager : MonoBehaviour {
     public Text levelClearScore;
     public GameObject gameOverCanvas;
     public GameObject levelClearCanvas;
-    private int levelNumber = 1;
     public bool forMobile;
     public bool isGameOver;
     void Start() {
@@ -64,7 +64,8 @@ public class GameManager : MonoBehaviour {
 
         lives += change;
 
-        if(lives <= 0) {
+        if(lives <= 0 || (ballClones == 0 && !GameObject.FindGameObjectWithTag("Ball").activeInHierarchy)) {
+            
             lives = 0;
             gameOver();
         }
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void gameOver() {
+    public void gameOver() {
 
         isGameOver = true;
         gameOverCanvas.SetActive(true);
