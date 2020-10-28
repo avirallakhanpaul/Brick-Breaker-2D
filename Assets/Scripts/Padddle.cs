@@ -38,6 +38,10 @@ public class Padddle : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D obj) {
 
+        if(gameManager.isGameOver) {
+            return;
+        }
+
         if(obj.gameObject.CompareTag("Life Powerup")) {
 
             gameManager.updateLives(obj.gameObject.GetComponent<PowerUp>().LifePowerUp);

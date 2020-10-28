@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 
         lives += change;
 
-        if(lives <= 0 || (ballClones == 0 && !GameObject.FindGameObjectWithTag("Ball").activeInHierarchy)) {
+        if(lives <= 0 ) {  // || (ballClones == 0 && !GameObject.FindGameObjectWithTag("Ball").activeInHierarchy)
             
             lives = 0;
             gameOver();

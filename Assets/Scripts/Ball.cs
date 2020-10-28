@@ -43,6 +43,7 @@ public class Ball : MonoBehaviour {
 
             if(gameManager.ballClones == 0 && this.gameObject.name == "Ball") {
 
+                this.gameObject.SetActive(true);
                 resetBallPosition();
 
                 if(gameManager.forMobile) {
@@ -65,14 +66,18 @@ public class Ball : MonoBehaviour {
 
         if(obj.CompareTag("Bottom Edge")) {
 
+            isPlaying = false;
+            gameManager.updateLives(-1);
+            
+            if(gameManager.lives <= 0) {
+                this.gameObject.SetActive(false);
+            }
+
             if(this.gameObject.name == "Ball Clone(Clone)") {
 
                 gameManager.ballClones--;
                 Destroy(this.gameObject);
             }
-            
-            isPlaying = false;
-            gameManager.updateLives(-1);
         }
     }
 
@@ -115,7 +120,7 @@ public class Ball : MonoBehaviour {
                     } else if (Mathf.Floor(Random.Range(0.0f, 8.0f)) == Mathf.Floor(Random.Range(0.0f, 8.0f))) {
 
                         Instantiate(DeathPowerUpPrefab, obj.transform.position, obj.transform.rotation);
-                    } else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
+                    } else if (Mathf.Floor(Random.Range(0.0f, 3.0f)) == Mathf.Floor(Random.Range(0.0f, 3.0f))) {
 
                         Instantiate(SplitPowerUpPrefab, obj.transform.position, obj.transform.rotation);
                     }
