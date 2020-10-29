@@ -120,7 +120,7 @@ public class Ball : MonoBehaviour {
                     } else if (Mathf.Floor(Random.Range(0.0f, 8.0f)) == Mathf.Floor(Random.Range(0.0f, 8.0f))) {
 
                         Instantiate(DeathPowerUpPrefab, obj.transform.position, obj.transform.rotation);
-                    } else if (Mathf.Floor(Random.Range(0.0f, 3.0f)) == Mathf.Floor(Random.Range(0.0f, 3.0f))) {
+                    } else if (Mathf.Floor(Random.Range(0.0f, 10.0f)) == Mathf.Floor(Random.Range(0.0f, 10.0f))) {
 
                         Instantiate(SplitPowerUpPrefab, obj.transform.position, obj.transform.rotation);
                     }

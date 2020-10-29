@@ -123,4 +123,8 @@ public class GameManager : MonoBehaviour {
     public void quitGame() {
         Application.Quit();
     }
+
+    public void restartGame() {
+        SceneManager.LoadScene(0);
+    }
 }

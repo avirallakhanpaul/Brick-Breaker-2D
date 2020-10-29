@@ -5,8 +5,8 @@ using UnityEngine;
 public class Padddle : MonoBehaviour {
     
     public float horizontalSpeed = 5.0f;
-    public float leftScreenEdge = -15.05f;
-    public float rightScreenEdge = -11.4f;
+    public float leftScreenEdge = -18.0f;
+    public float rightScreenEdge = -11.25f;
     public GameObject BallClonePrefab;
     public GameManager gameManager;
     
@@ -18,7 +18,7 @@ public class Padddle : MonoBehaviour {
 
         if(gameManager.forMobile) {
 
-            horizontalSpeed = 12.0f;
+            horizontalSpeed = 15.0f;
             float horizontalAxisSpeed = Input.acceleration.x * horizontalSpeed;
             transform.Translate(Vector2.right * horizontalAxisSpeed * Time.deltaTime);
         } else {
