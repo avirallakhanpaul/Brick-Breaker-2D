@@ -56,3 +56,6 @@ TagManager:
   - name: Paddle
     uniqueID: 1079849257
     locked: 0
+  - name: Instructions Screen
+    uniqueID: 451894635
+    locked: 0

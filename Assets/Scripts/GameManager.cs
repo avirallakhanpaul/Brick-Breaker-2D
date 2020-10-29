@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public Text livesText;
     public Text livesTextGreen;
     public Text livesTextRed;
+    public Text levelText;
     public Text gameOverScore;
     public Text levelClearScore;
     public GameObject gameOverCanvas;
@@ -24,15 +25,16 @@ public class GameManager : MonoBehaviour {
 
         Scene currScene = SceneManager.GetActiveScene();
         
-        if (currScene.buildIndex == 0) {
+        if(currScene.buildIndex == 0) {
             lives = 2;
         }
-        else if (currScene.buildIndex > 0) {
+        else if(currScene.buildIndex > 0) {
             lives = 3;
         }
         
         setScore();
         setLives();
+        setLevel();
 
         noOfBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
     }
@@ -46,6 +48,10 @@ public class GameManager : MonoBehaviour {
         livesText.text = "Lives: " + lives;
         livesTextGreen.text = "Lives: " + lives;
         livesTextRed.text = "Lives: " + lives;
+    }
+
+    void setLevel() {
+        levelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
     }
 
     public void updateLives(int change) {
