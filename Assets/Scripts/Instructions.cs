@@ -6,21 +6,19 @@ using UnityEngine;
 
 public class Instructions : MonoBehaviour {
 
-    private int counter = 3;
-    private float time = 0f;
+    public int counter = 3;
+    private float time = 3f;
     public Text counterText; 
     void Start() {
-
-        counterText.text = counter.ToString();
         
         Invoke("loadFirstLevel", time);
-        // InvokeRepeating("updateCounterText", 0f, 1f);
+        InvokeRepeating("updateCounterText", 1f, 1f);
 
-        // if(counter > 0) {
-        //     updateCounterText();
-        // } else {
-        //     return;
-        // }
+        if(counter > 0) {
+            updateCounterText();
+        } else {
+            return;
+        }
     }
 
     void loadFirstLevel() {
@@ -29,13 +27,8 @@ public class Instructions : MonoBehaviour {
 
     void updateCounterText() {
 
-        // counterText.text = time.ToString();
-        // time--;
-
         if(counter > 0) {
 
-            Debug.Log("inside if");
-            // time += 1f;
             counterText.text = counter.ToString();
             counter--;
         } else {
@@ -43,19 +36,4 @@ public class Instructions : MonoBehaviour {
         }
         
     }
-    // void Update() {
-
-    //     if(counter <= 0) {
-    //         return;
-    //     } else {
-
-    //         if(Time.time >= time) {
-
-    //             Debug.Log("inside if");
-    //             time += 1f;
-    //             counterText.text = counter.ToString();
-    //             counter--;
-    //         }
-    //     }
-    // }
 }

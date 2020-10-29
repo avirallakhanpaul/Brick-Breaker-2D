@@ -1103,17 +1103,17 @@ MonoBehaviour:
   lives: 2
   noOfBricks: 0
   ballClones: 0
-  scoreText: {fileID: 0}
-  scoreTextGreen: {fileID: 0}
-  livesText: {fileID: 0}
-  livesTextGreen: {fileID: 0}
-  livesTextRed: {fileID: 0}
-  levelText: {fileID: 0}
-  gameOverScore: {fileID: 0}
-  levelClearScore: {fileID: 0}
+  scoreText: {fileID: 881176687}
+  scoreTextGreen: {fileID: 975785611}
+  livesText: {fileID: 829626457}
+  livesTextGreen: {fileID: 208644988}
+  livesTextRed: {fileID: 1028539152}
+  levelText: {fileID: 541306457}
+  gameOverScore: {fileID: 723344577}
+  levelClearScore: {fileID: 739147955}
   gameOverCanvas: {fileID: 11111897}
   levelClearCanvas: {fileID: 1519973518}
-  forMobile: 0
+  forMobile: 1
   isGameOver: 0
 --- !u!1001 &264163797
 PrefabInstance:
